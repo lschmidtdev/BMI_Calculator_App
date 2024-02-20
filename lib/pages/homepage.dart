@@ -47,7 +47,7 @@ class _HomepageState extends State<Homepage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CustomTextField(
-                labelText: StringsConstants.name,
+                
                 labelColor: Colors.black,
                 controller: nameController,
                 keyboardType: TextInputType.text,
@@ -55,7 +55,7 @@ class _HomepageState extends State<Homepage> {
               ),
               const CustomSpacer16(),
               CustomTextField(
-                labelText: StringsConstants.age,
+                
                 labelColor: Colors.black,
                 controller: ageController,
                 keyboardType: TextInputType.number,
@@ -63,7 +63,7 @@ class _HomepageState extends State<Homepage> {
               ),
               const CustomSpacer16(),
               CustomTextField(
-                labelText: StringsConstants.height,
+                
                 labelColor: Colors.black,
                 controller: heightController,
                 keyboardType: TextInputType.number,
@@ -71,7 +71,7 @@ class _HomepageState extends State<Homepage> {
               ),
               const CustomSpacer16(),
               CustomTextField(
-                labelText: StringsConstants.weight,
+                
                 labelColor: Colors.black,
                 controller: weightController,
                 keyboardType: TextInputType.number,

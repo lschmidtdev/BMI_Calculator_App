@@ -1,10 +1,16 @@
+import 'package:bmi_calculator_app/isar_database/isar_service.dart';
 import 'package:bmi_calculator_app/models/bmi_history_model.dart';
 import 'package:bmi_calculator_app/models/person_model.dart';
+import 'package:bmi_calculator_app/pages/home_page.dart';
 import 'package:bmi_calculator_app/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  IsarService isarService = IsarService();
+  await isarService.openIsar();
+
   runApp(
     MultiProvider(
       providers: [
@@ -13,6 +19,7 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => BmiHistoryModel()),
+        ChangeNotifierProvider(create: (context) => IsarService()),
       ],
       child: const MyApp(),
     ),
@@ -31,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Homepage(),
+      home: HomePage(),
     );
   }
 }
