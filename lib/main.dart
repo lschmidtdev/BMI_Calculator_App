@@ -8,8 +8,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  IsarService isarService = IsarService();
-  await isarService.openIsar();
+  await IsarService.initializeIsar();
 
   runApp(
     MultiProvider(
