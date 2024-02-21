@@ -43,7 +43,38 @@ class __UserInformationsScreenStateState extends State<UserInformationsScreenSta
           const CustomSpacer16(),
           Center(
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){
+                try{
+                  double height = double.parse(heightController.text);
+                  double weight = double.parse(weightController.text);
+                  double bmi = weight / (height * height);
+                  String result;
+                  if(bmi < 18.5){
+                    result = 'underweight';
+                  }else if(bmi >= 18.5 && bmi < 24.9){
+                    result = 'normal';
+                  }else if(bmi >= 24.9 && bmi < 29.9){
+                    result = 'overweight';
+                  }else{
+                    result = 'obese';
+                  }
+                  IsarService().addUserInformation(height, weight, bmi, result); 
+                  setState(() {
+                    heightController.clear();   
+                    weightController.clear();
+                    nameController.clear();        
+                  });
+                } on FormatException{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Please enter valid numbers for age, height, and weight.'))
+                      );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('An error occurred. Please try again.'))
+                      );
+                      return;
+                }
+              },
               style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.purple.withOpacity(0.4)),

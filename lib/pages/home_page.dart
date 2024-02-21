@@ -1,7 +1,9 @@
+import 'package:bmi_calculator_app/isar_database/isar_service.dart';
 import 'package:bmi_calculator_app/pages/homepage_widgets/user_informations_screen.dart';
 import 'package:bmi_calculator_app/pages/homepage_widgets/user_results_screen.dart';
 import 'package:bmi_calculator_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +14,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    readUserInformation();
+  }
+
+  void readUserInformation() async {
+    context.read<IsarService>().getAllUserInformation();
+  }
 
   @override
   Widget build(BuildContext context) {
